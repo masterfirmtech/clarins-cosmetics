@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --rose:        #9b4f52;
+  --rose-hover:  #7e3a3d;
+  --rose-pale:   #f7eded;
+  --gold:        #c9963a;
+  --gold-light:  #e2b96a;
+  --ivory:       #faf6f1;
+  --ivory-dark:  #f0e8e0;
+  --charcoal:    #1c1010;
+  --muted:       #6e5050;
+  --border:      rgba(155,79,82,0.13);
+  --shadow:      0 16px 56px rgba(28,16,16,0.14);
+  --tr:          0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+body {
+  background: var(--ivory);
+  color: var(--charcoal);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { width: 100%; min-height: 100vh; }
+img   { display: block; max-width: 100%; }
+button { font-family: 'Outfit', sans-serif; cursor: pointer; }
