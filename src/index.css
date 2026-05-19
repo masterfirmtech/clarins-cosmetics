@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@200;300;400;500&display=swap');
 
+/* --- 1. Global Reset (Student 1) --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* --- 2. Color Variables (Student 1 Luxury Palette) --- */
 :root {
   --rose:        #9b4f52;
   --rose-hover:  #7e3a3d;
@@ -19,8 +21,12 @@
   --border:      rgba(155,79,82,0.13);
   --shadow:      0 16px 56px rgba(28,16,16,0.14);
   --tr:          0.3s cubic-bezier(0.4,0,0.2,1);
+
+  /* Student 2 structural fallbacks */
+  --mono: ui-monospace, Consolas, monospace;
 }
 
+/* --- 3. Body & Containers --- */
 body {
   background: var(--ivory);
   color: var(--charcoal);
@@ -28,6 +34,61 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-#root { width: 100%; min-height: 100vh; }
+#root { 
+  width: 100%; 
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
 img   { display: block; max-width: 100%; }
 button { font-family: 'Outfit', sans-serif; cursor: pointer; }
+
+/* --- 4. Typography Rules (Integrated from Student 2) --- */
+h1, h2 {
+  font-family: 'Cormorant Garamond', serif; /* Updated to use Student 1's elegant font */
+  font-weight: 500;
+  color: var(--rose);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+}
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 20px;
+  }
+}
+
+p {
+  margin: 0;
+  line-height: 145%;
+}
+
+/* --- 5. Cart/Badge Elements (Student 2 Functionality) --- */
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--ivory);
+  background: var(--rose); /* Thematic adjustment */
+  padding: 4px 8px;
+}

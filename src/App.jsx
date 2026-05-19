@@ -2,30 +2,38 @@ import React, { useState, useRef } from "react";
 import Header from "./Header.jsx";
 import ProductList from "./ProductList.jsx";
 import OurStoryModal from "./OurStoryModal.jsx";
+import Cart from "./components/Cart.jsx"; // Integrated Student 2's Cart component
 import "./index.css";
 
 export default function App() {
   const [cartCount,      setCartCount]      = useState(0);
   const [searchTerm,     setSearchTerm]     = useState("");
   const [storyOpen,      setStoryOpen]      = useState(false);
+  const [cartOpen,       setCartOpen]       = useState(false); // New state to toggle Student 2's Cart visibility
   const [activeCategory, setActiveCategory] = useState("All");
   const productsRef = useRef(null);
 
-  function handleAddToCart() { setCartCount((n) => n + 1); }
+  function handleAddToCart() { 
+    setCartCount((n) => n + 1); 
+  }
 
   function scrollToProducts() {
     productsRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
-    <div style={{ minHeight:"100vh", background:"var(--ivory)" }}>
+    <div style={{ minHeight:"100vh", background:"var(--ivory)", position: "relative" }}>
 
+      {/* --- Modals and Overlays --- */}
       {storyOpen && <OurStoryModal onClose={() => setStoryOpen(false)} />}
+      
+      {/* Integrated Student 2's Cart display controlled by state toggle */}
+      {cartOpen && <Cart onClose={() => setCartOpen(false)} />}
 
-      {/* Header receives activeCategory and setter so the nav works */}
+      {/* --- Header Navigation System --- */}
       <Header
         cartCount={cartCount}
-        onCartClick={handleAddToCart}
+        onCartClick={() => setCartOpen(true)} // Toggles the cart overlay open when clicked
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
         activeCategory={activeCategory}
@@ -35,7 +43,7 @@ export default function App() {
         }}
       />
 
-      {/* ── HERO ── */}
+      {/* ── HERO SECTION ── */}
       <section style={{
         position:"relative", minHeight:"92vh",
         display:"flex", flexDirection:"column",
@@ -111,7 +119,7 @@ export default function App() {
         }} />
       </section>
 
-      {/* ── MARQUEE — slowed to 40s ── */}
+      {/* ── MARQUEE BRAGGING INFOBAR ── */}
       <div style={{
         background:"var(--charcoal)", padding:"14px 0",
         overflow:"hidden", whiteSpace:"nowrap",
@@ -133,7 +141,7 @@ export default function App() {
         `}</style>
       </div>
 
-      {/* ── PRODUCTS — activeCategory passed from header nav ── */}
+      {/* ── PRODUCTS MAIN CONTENT GRID ── */}
       <div ref={productsRef}>
         <ProductList
           onAddToCart={handleAddToCart}
@@ -143,7 +151,7 @@ export default function App() {
         />
       </div>
 
-      {/* ── FOOTER ── */}
+      {/* ── FOOTER BRADING BLOCK ── */}
       <footer style={{
         background:"var(--charcoal)", padding:"48px 24px 36px",
         fontFamily:"'Outfit',sans-serif",
@@ -170,7 +178,7 @@ export default function App() {
             fontSize:"9px", fontWeight:200,
             color:"rgba(255,255,255,0.25)", letterSpacing:"0.2em", textTransform:"uppercase",
           }}>
-            © 2025 Clarins Nigeria · All Rights Reserved · 100% Authentic Products
+            © 2026 Clarins Nigeria · All Rights Reserved · 100% Authentic Products
           </p>
         </div>
       </footer>
